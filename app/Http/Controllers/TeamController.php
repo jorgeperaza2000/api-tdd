@@ -16,4 +16,11 @@ class TeamController extends Controller
         return response()->json($team, 200);
     }
 
+    public function store(StoreTeamRequest $request)
+    {
+        $team = Team::create($request->only('name', 'slug_name'));
+
+        return response()->json($team, 201);
+    }
+
 }

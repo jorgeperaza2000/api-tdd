@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/teams/{team}', [TeamController::class, 'getById']);
+Route::post('/teams', [TeamController::class, 'store']);
