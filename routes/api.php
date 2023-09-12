@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\TeamController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/teams', [TeamController::class, 'index']);
+Route::get('/teams/{team}', [TeamController::class, 'getById']);
+Route::post('/teams', [TeamController::class, 'store']);
+Route::put('/teams/{team}', [TeamController::class, 'update']);
+Route::delete('/teams/{team}', [TeamController::class, 'delete']);
