@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateTeamRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateTeamRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,13 @@ class UpdateTeamRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            //'name' => 'required|unique:teams|max:100',
+            'name' => [
+                'required',
+                'max:100',
+                Rule::unique('teams')->ignoreModel($this->team),
+            ],
+            'slug_name' => 'required|max:20',
         ];
     }
 }
