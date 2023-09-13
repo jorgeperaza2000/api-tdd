@@ -11,6 +11,6 @@ class Team extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name', 'slug_name'
+        'name', 'slug_name',
     ];
 }
